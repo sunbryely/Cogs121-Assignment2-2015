@@ -1,6 +1,4 @@
-COGS 121 Assignment 1 - Spring 2015
+COGS 121 Assignment 2 - Spring 2015
 ===========
 
-This is the starter code for an application that authenticates with Instagram via the Oauth protocol and Passport.
 Instructions are in the wiki.
-# Assignment2-2015
