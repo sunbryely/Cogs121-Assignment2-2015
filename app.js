@@ -10,7 +10,6 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var dotenv = require('dotenv');
 var mongoose = require('mongoose');
-var Facebook = require('fbgraph');
 var Instagram = require('instagram-node-lib');
 var async = require('async');
 var app = express();

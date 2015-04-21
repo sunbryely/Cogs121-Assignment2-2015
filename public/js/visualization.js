@@ -36,7 +36,7 @@ d3.json('/igMediaCounts', function(error, data) {
   //set up x axis
   svg.append("g")
     .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + height + ")") //move x-axis to the bottom
     .call(xAxis)
     .selectAll("text")  
     .style("text-anchor", "end")
