@@ -19,12 +19,21 @@ var yAxis = d3.svg.axis()
   .scale(scaleY)
   .orient("left");
 
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-30, 0])
+  .html(function(d) {
+    return "<strong>Media Count:</strong> <span style='color:blue'>" + d.counts.media + "</span>";
+  })
+
 //create svg
 var svg = d3.select("body").append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.call(tip);
 
 //get json object which contains media counts
 d3.json('/igMediaCounts', function(error, data) {
@@ -65,7 +74,9 @@ d3.json('/igMediaCounts', function(error, data) {
     .attr("x", function(d) { return scaleX(d.username); })
     .attr("width", scaleX.rangeBand())
     .attr("y", function(d) { return scaleY(d.counts.media); })
-    .attr("height", function(d) { return height - scaleY(d.counts.media); });
+    .attr("height", function(d) { return height - scaleY(d.counts.media); })
+    .on('mouseover', tip.show)
+    .on('mouseout', tip.hide);
 
     //sorting
     d3.select("button").on("click", function(){
