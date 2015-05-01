@@ -1,4 +1,11 @@
 body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+  width: 960px;
+}
+
+text {
   font: 10px sans-serif;
 }
 
@@ -9,10 +16,8 @@ body {
   shape-rendering: crispEdges;
 }
 
-.bar {
-  fill: steelblue;
-}
-
-.x.axis path {
-  display: none;
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }

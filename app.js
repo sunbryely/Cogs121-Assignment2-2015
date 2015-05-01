@@ -225,6 +225,10 @@ app.get('/c3visualization', ensureAuthenticatedInstagram, function (req, res){
   res.render('c3visualization');
 }); 
 
+app.get('/ourd3vis', ensureAuthenticatedInstagram, function (req, res){
+  res.render('ourd3vis');
+}); 
+
 app.get('/auth/instagram',
   passport.authenticate('instagram'),
   function(req, res){
