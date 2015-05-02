@@ -1,5 +1,13 @@
 //get json object which contains media counts
 d3.json('/igMediaCounts', function(error, data) {
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-30, 0])
+  .html(function(d) {
+    return "<strong>Media Count:</strong> <span style='color:blue'>" + d.counts.follows + "</span>";
+  })
+
 var n = 2, // number of layers
     m = 58, // number of samples per layer
 	dataArr = convert(data.users),
@@ -10,8 +18,7 @@ var n = 2, // number of layers
 	//y0 = followed_by
     yGroupMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y; }); }),
     yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
-console.log(yGroupMax);
-console.log(yStackMax);
+
 	
 var margin = {top: 20, right: 20, bottom: 100, left: 20},
     width = 960 - margin.left - margin.right,
@@ -20,7 +27,7 @@ var margin = {top: 20, right: 20, bottom: 100, left: 20},
 var x = d3.scale.ordinal()
    // .domain(data.users.map(function(d) { return d.username; }))
     .rangeRoundBands([0, width], .08);
-console.log("Error Here 3");
+
 var y = d3.scale.linear()
     .domain([0, yStackMax])
     .range([height, 0]);
@@ -36,19 +43,22 @@ var xAxis = d3.svg.axis()
     .orient("bottom");
 //set domain of x to be all the usernames contained in the data
 x.domain(data.users.map(function(d) { return d.username; }));
- console.log("Error Here 4"); 
+
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+svg.call(tip);
+
+
 var layer = svg.selectAll(".layer")
     .data(layers)
   .enter().append("g")
     .attr("class", "layer")
     .style("fill", function(d, i) { return color(i); });
-console.log("Error Here 5");
+
 var rect = layer.selectAll("rect")
     .data(function(d) { return d; })
 	.enter()
@@ -57,12 +67,14 @@ var rect = layer.selectAll("rect")
     .attr("y", height)
     .attr("width", x.rangeBand())
     .attr("height", 0);
-console.log("X:" + x);
+
+
+
 rect.transition()
     .delay(function(d, i) { return i * 10; })
     .attr("y", function(d) { return y(d.y0 + d.y); })
     .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); });
-console.log("Error Here 7");
+
 svg.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + height + ")")
@@ -74,7 +86,7 @@ svg.append("g")
     .attr("transform", function(d) {
       return "rotate(-65)" 
     });
-console.log("Error Here 8");
+
 //Functions to change visual
 	
 d3.selectAll("input").on("change", change);
@@ -88,7 +100,7 @@ function change() {
   if (this.value === "grouped") transitionGrouped();
   else transitionStacked();
 }
-console.log("Error Here 9");
+
 function transitionGrouped() {
   y.domain([0, yGroupMax]);
 
@@ -133,7 +145,6 @@ function convert(original) {
 	console.log(multiArray);
     return multiArray;
 }
-console.log("Error Here 10");
 // Inspired by Lee Byron's test data generator.
 function bumpLayer(n, o) {
 
@@ -153,4 +164,3 @@ function bumpLayer(n, o) {
   return a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });
 }
 });
-console.log("Error Here 11");
