@@ -29,4 +29,22 @@ body {
   top: 10px;
   right: 10px;
 }
+<<<<<<< HEAD
 */
+=======
+
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://sampsonresume.com/labs/pIkfp.gif') 
+                50% 50% 
+                no-repeat;
+}
+>>>>>>> e4f2aa93cd1e19ff06e76e677cff4239371a8096
