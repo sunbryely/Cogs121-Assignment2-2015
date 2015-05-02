@@ -7,7 +7,17 @@ body {
 
 .container-fluid{
 	background-color: #D6FFAD;
+
 }
+
+.lpurp{
+	color: #AAAADD;
+}
+
+.dpurp{
+	color: #555566;
+}
+
 </style>
 </head>
 
@@ -28,9 +38,20 @@ body {
   </div>
 </nav>
 
+
 <h1> Our D3 Visualization </h1>
 <label><input type="radio" name="mode" value="grouped"> Grouped</label>
 <label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+
+<div class="pull-right">
+<dl>
+    <dt class="lpurp">[Light Purple]</dt>
+    <dd> - # of Followers</dd>
+
+    <dt class="dpurp">[Dark Purple]</dt>
+    <dd> - # of Users Followed By </dd>
+</dl>
+</div>
 
 <div id="chart"></div>
 

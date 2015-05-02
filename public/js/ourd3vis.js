@@ -1,12 +1,6 @@
 //get json object which contains media counts
 d3.json('/igMediaCounts', function(error, data) {
 
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-30, 0])
-  .html(function(d) {
-    return "<strong>Media Count:</strong> <span style='color:blue'>" + d.counts.follows + "</span>";
-  })
 
 var n = 2, // number of layers
     m = 58, // number of samples per layer
@@ -31,7 +25,7 @@ var x = d3.scale.ordinal()
 var y = d3.scale.linear()
     .domain([0, yStackMax])
     .range([height, 0]);
-console.log(y);
+
 var color = d3.scale.linear()
     .domain([0, n - 1])
     .range(["#aad", "#556"]);
@@ -50,7 +44,6 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.call(tip);
 
 
 var layer = svg.selectAll(".layer")
@@ -63,7 +56,7 @@ var rect = layer.selectAll("rect")
     .data(function(d) { return d; })
 	.enter()
 	.append("rect")
-    .attr("x", function(d) { console.log(x(d.x)); return x(d.x); })
+    .attr("x", function(d) { return x(d.x); })
     .attr("y", height)
     .attr("width", x.rangeBand())
     .attr("height", 0);
@@ -94,6 +87,9 @@ d3.selectAll("input").on("change", change);
 var timeout = setTimeout(function() {
   d3.select("input[value=\"grouped\"]").property("checked", true).each(change);
 }, 2000);
+
+
+
 
 function change() {
   clearTimeout(timeout);
@@ -142,7 +138,7 @@ function convert(original) {
 		}
 	multiArray.push(tempArray);
 	multiArray.push(tempArray2);
-	console.log(multiArray);
+
     return multiArray;
 }
 // Inspired by Lee Byron's test data generator.
