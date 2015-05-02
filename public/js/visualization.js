@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 //get json object which contains media counts
 d3.json('/igMediaCounts', function(error, data) {
-=======
-
->>>>>>> e4f2aa93cd1e19ff06e76e677cff4239371a8096
+	
 var margin = {top: 20, right: 20, bottom: 100, left: 40};
 var width = 960 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
@@ -100,9 +97,6 @@ var svg = d3.select("body").append("svg")
           .selectAll("text")
           .style("text-anchor", "end")
     });
-<<<<<<< HEAD
-});
-=======
 });
 
->>>>>>> e4f2aa93cd1e19ff06e76e677cff4239371a8096
+
