@@ -103,7 +103,7 @@ passport.use(new InstagramStrategy({
 //Configures the Template engine
 app.engine('handlebars', handlebars({defaultLayout: 'layout'}));
 app.set('view engine', 'handlebars');
-app.set('views', __dirname + 'views');
+app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -225,8 +225,8 @@ app.get('/c3visualization', ensureAuthenticatedInstagram, function (req, res){
   res.render('c3visualization');
 }); 
 
-app.get('/ourd3vis', ensureAuthenticatedInstagram, function (req, res){
-  res.render('ourd3vis');
+app.get('/d3visualization', ensureAuthenticatedInstagram, function (req, res){
+  res.render('d3visualization');
 }); 
 
 app.get('/auth/instagram',
