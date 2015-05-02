@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--Why can't this load-->
+<style>
+body {
+	background-color: #FFFFD4;
+}
+
+.container-fluid{
+	background-color: #D6FFAD;
+
+}
+
+.lpurp{
+	color: #AAAADD;
+}
+
+.dpurp{
+	color: #555566;
+}
+
+</style>
+</head>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Beautiful Bars</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li><a href="/account">Account Info</a></li>
+        <li ><a href="/c3visualization">C3 Visualization</a></li>
+        <li><a href="/visualization">D3 Visualization</a></li>
+        <li class="active"><a href="/d3visualization">Our D3 Visualization</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<h1> Our D3 Visualization </h1>
+<label><input type="radio" name="mode" value="grouped"> Grouped</label>
+<label><input type="radio" name="mode" value="stacked" checked> Stacked</label>
+
+<div class="pull-right">
+<dl>
+    <dt class="lpurp">[Light Purple]</dt>
+    <dd> - # of Followers</dd>
+
+    <dt class="dpurp">[Dark Purple]</dt>
+    <dd> - # of Users Followed By </dd>
+</dl>
+</div>
+
+<div id="chart"></div>
+
+<script src="js/ourd3vis.js"></script>
+</html>
