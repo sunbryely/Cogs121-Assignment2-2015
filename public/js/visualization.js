@@ -1,3 +1,5 @@
+//get json object which contains media counts
+d3.json('/igMediaCounts', function(error, data) {
 var margin = {top: 20, right: 20, bottom: 100, left: 40};
 var width = 960 - margin.left - margin.right;
 var height = 500 - margin.top - margin.bottom;
@@ -35,8 +37,7 @@ var svg = d3.select("body").append("svg")
 
   svg.call(tip);
 
-//get json object which contains media counts
-d3.json('/igMediaCounts', function(error, data) {
+
   //set domain of x to be all the usernames contained in the data
   scaleX.domain(data.users.map(function(d) { return d.username; }));
   //set domain of y to be from 0 to the maximum media count returned
